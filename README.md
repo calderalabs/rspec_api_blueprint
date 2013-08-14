@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In your spec_helper.rb file add
+
+    require 'rspec_api_blueprint'
 
 ## Contributing
 
