@@ -1,6 +1,6 @@
 # RspecApiBlueprint
 
-TODO: Write a gem description
+Autogeneration of API documentation from request specs
 
 ## Installation
 
