@@ -1,4 +1,4 @@
-# RspecApiBlueprint
+# Rspec Api Blueprint
 
 Autogeneration of API documentation from request specs
 
