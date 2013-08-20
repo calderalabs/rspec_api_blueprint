@@ -26,7 +26,7 @@ In your spec_helper.rb file add
     
 Write tests using the following convention:
 
-- Top level descriptions are named after the model (plural form) followed by the word “Requests”. For an example model called Arena it would be “Arenas Requests”.
+- Top level descriptions are named after the model (plural form) followed by the word “Requests”. For a example model called Arena it would be “Arenas Requests”.
 - Second level descriptions are actions in the form of “VERB path”. For the show action of the Arenas controller it would be “GET /arenas/{id}”.
 
 Example:
