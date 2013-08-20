@@ -1,6 +1,7 @@
 # Rspec Api Blueprint
 
-Autogeneration of API documentation from request specs
+Autogeneration of API documentation in blueprint format from request specs.
+You can find more about blueprint at http://apiblueprint.org
 
 ## Installation
 
@@ -21,7 +22,48 @@ Or install it yourself as:
 In your spec_helper.rb file add
 
     require 'rspec_api_blueprint'
+    
+Write tests using the following convention:
 
+- Top level descriptions are named after the model (plural form) followed by the word “Requests”. For an example model called Arena it would be “Arenas Requests”.
+- Second level descriptions are actions in the form of “VERB path”. For the show action of the Arenas controller it would be “GET /arenas/:id”.
+
+Example:
+    
+    describe 'Arenas Requests' do
+      describe 'GET /v1/arenas/{id}' do
+        it 'responds with the requested arena' do
+          arena = create :arena, foursquare_id: '5104'
+          get v1_arena_path(arena)
+
+          response.status.should eq(200)
+        end
+      end
+    end
+    
+The output:
+
+    # GET /v1/arenas/{id} 
+
+    + Response 200 (application/json) 
+
+        {
+          "arena": {
+            "id": "4e9dbbc2-830b-41a9-b7db-9987735a0b2a",
+            "name": "Clinton St. Baking Co. & Restaurant",
+            "latitude": 40.721294,
+            "longitude": -73.983994,
+            "foursquare_id": "5104"
+          }
+        }
+        
+        
+## Caveats
+
+401, 403 and 301 statuses are ignored since rspec produces an undesired output.
+
+TODO: Add option to choose ignored statuses.
+    
 ## Contributing
 
 1. Fork it
