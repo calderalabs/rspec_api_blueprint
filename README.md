@@ -1,7 +1,7 @@
 # Rspec Api Blueprint
 
-Autogeneration of API documentation in blueprint format from request specs.
-You can find more about blueprint at http://apiblueprint.org
+Autogeneration of API documentation using the Blueprint format from request specs.
+You can find more about Blueprint at http://apiblueprint.org
 
 ## Installation
 
