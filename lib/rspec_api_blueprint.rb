@@ -22,18 +22,18 @@ RSpec.configure do |config|
 
         if request.headers['Authorization']
           f.write "+ Request Headers \n\n"
-          f.write "Authorization: #{request.headers['Authorization']} \n\n".indent(2)
+          f.write "Authorization: #{request.headers['Authorization']} \n\n".indent(4)
         end
 
         if request_body.present?
           f.write "+ Request (application/json) \n\n"
-          f.write "#{JSON.pretty_generate(JSON.parse(request_body))} \n\n".indent(2)
+          f.write "#{JSON.pretty_generate(JSON.parse(request_body))} \n\n".indent(4)
         end
 
         f.write "+ Response #{response.status} (application/json) \n\n"
 
         if response.body.present?
-          f.write "#{JSON.pretty_generate(JSON.parse(response.body))} \n\n".indent(2)
+          f.write "#{JSON.pretty_generate(JSON.parse(response.body))} \n\n".indent(4)
         end
       end unless response.status == 401 || response.status == 403 || response.status == 301
     end
