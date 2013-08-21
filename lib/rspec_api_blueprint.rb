@@ -1,6 +1,12 @@
 require "rspec_api_blueprint/version"
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    Dir.glob(File.join(Rails.root, '/docs/', '*')).each do |f|
+      File.delete(f)
+    end
+  end
+
   config.after(:each, type: :request) do
     if response
       example_group = example.metadata[:example_group]
