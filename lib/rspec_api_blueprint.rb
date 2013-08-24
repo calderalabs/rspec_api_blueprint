@@ -30,7 +30,7 @@ RSpec.configure do |config|
         authorization_header = request.headers['Authorization']
 
         if request_body.present? || authorization_header.present?
-          f.write "+ Request (application/json)\n\n"
+          f.write "+ Request #{request.content_type}\n\n"
 
           # Request Headers
           if authorization_header
@@ -43,14 +43,13 @@ RSpec.configure do |config|
             f.write "+ Body\n\n".indent(4)
             f.write "#{JSON.pretty_generate(JSON.parse(request_body))}\n\n".indent(8)
           end
-
         end
 
         # Response
-        f.write "+ Response #{response.status} (application/json)\n\n"
+        f.write "+ Response #{response.status} #{response.content_type}\n\n"
 
         if response.body.present?
-          f.write "#{JSON.pretty_generate(JSON.parse(response.body))}\n\n".indent(8)
+          f.write "#{JSON.pretty_generate(JSON.parse(response.body))}\n\n".indent(4)
         end
       end unless response.status == 401 || response.status == 403 || response.status == 301
     end
