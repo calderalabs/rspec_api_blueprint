@@ -33,15 +33,15 @@ RSpec.configure do |config|
           f.write "+ Request #{request.content_type}\n\n"
 
           # Request Headers
-          if authorization_header
+          if authorization_header.present?
             f.write "+ Headers\n\n".indent(4)
             f.write "Authorization: #{authorization_header}\n\n".indent(8)
           end
 
           # Request Body
           if request_body.present?
-            f.write "+ Body\n\n".indent(4)
-            f.write "#{JSON.pretty_generate(JSON.parse(request_body))}\n\n".indent(8)
+            f.write "+ Body\n\n".indent(4) if authorization_header
+            f.write "#{JSON.pretty_generate(JSON.parse(request_body))}\n\n".indent(authorization_header ? 8 : 4)
           end
         end
 
