@@ -27,15 +27,15 @@ RSpec.configure do |config|
 
         # Request
         request_body = request.body.read
-        authorizationHeader = request.headers['Authorization']
+        authorization_header = request.headers['Authorization']
 
-        if request_body.present? || authorizationHeader.present?
+        if request_body.present? || authorization_header.present?
           f.write "+ Request (application/json)\n\n"
 
           # Request Headers
-          if authorizationHeader
+          if authorization_header
             f.write "+ Headers\n\n".indent(4)
-            f.write "Authorization: #{authorizationHeader}\n\n".indent(8)
+            f.write "Authorization: #{authorization_header}\n\n".indent(8)
           end
 
           # Request Body
