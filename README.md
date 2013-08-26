@@ -8,7 +8,7 @@ You can find more about Blueprint at http://apiblueprint.org
 
 Add this line to your application's Gemfile:
 
-    gem 'rspec_api_blueprint'
+    gem 'rspec_api_blueprint', require: false
 
 And then execute:
 
