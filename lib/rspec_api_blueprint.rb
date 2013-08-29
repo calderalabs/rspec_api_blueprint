@@ -2,7 +2,7 @@ require "rspec_api_blueprint/version"
 
 RSpec.configure do |config|
   config.before(:suite) do
-    Dir.glob(File.join(Rails.root, '/docs/', '*')).each do |f|
+    Dir.glob(File.join(Rails.root, '/api_docs/', '*')).each do |f|
       File.delete(f)
     end
   end
@@ -21,7 +21,7 @@ RSpec.configure do |config|
       example_groups[-1][:description_args].first.match(/(\w+)\sRequests/)
       file_name = $1.underscore
 
-      File.open(File.join(Rails.root, "/docs/#{file_name}.txt"), 'a') do |f|
+      File.open(File.join(Rails.root, "/api_docs/#{file_name}.txt"), 'a') do |f|
         # Resource & Action
         f.write "# #{action}\n\n"
 
