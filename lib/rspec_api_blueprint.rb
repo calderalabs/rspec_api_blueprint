@@ -2,7 +2,10 @@ require "rspec_api_blueprint/version"
 
 RSpec.configure do |config|
   config.before(:suite) do
-    Dir.glob(File.join(Rails.root, '/api_docs/', '*')).each do |f|
+    api_docs_folder_path = File.join(Rails.root, '/api_docs/')
+    Dir.mkdir(api_docs_folder_path) unless Dir.exists?(api_docs_folder_path)
+
+    Dir.glob(File.join(api_docs_folder_path, '*')).each do |f|
       File.delete(f)
     end
   end
