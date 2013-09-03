@@ -1,7 +1,7 @@
 require "rspec_api_blueprint/version"
 
 RSpec.configure do |config|
-  config.before(:all, type: :requests) do
+  config.before(:all, type: :request) do
     api_docs_folder_path = File.join(Rails.root, '/api_docs/')
     Dir.mkdir(api_docs_folder_path) unless Dir.exists?(api_docs_folder_path)
 
