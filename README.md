@@ -23,14 +23,14 @@ Or install it yourself as:
 In your spec_helper.rb file add
 
     require 'rspec_api_blueprint'
-    
+
 Write tests using the following convention:
 
 - Top level descriptions are named after the model (plural form) followed by the word “Requests”. For a example model called Arena it would be “Arenas Requests”.
 - Second level descriptions are actions in the form of “VERB path”. For the show action of the Arenas controller it would be “GET /arenas/{id}”.
 
 Example:
-    
+
     describe 'Arenas Requests' do
       describe 'GET /v1/arenas/{id}' do
         it 'responds with the requested arena' do
@@ -41,12 +41,12 @@ Example:
         end
       end
     end
-    
+
 The output:
 
-    # GET /v1/arenas/{id} 
+    # GET /v1/arenas/{id}
 
-    + Response 200 (application/json) 
+    + Response 200 (application/json)
 
         {
           "arena": {
@@ -57,14 +57,14 @@ The output:
             "foursquare_id": "5104"
           }
         }
-        
-        
+
+
 ## Caveats
 
 401, 403 and 301 statuses are ignored since rspec produces a undesired output.
 
 TODO: Add option to choose ignored statuses.
-    
+
 ## Contributing
 
 1. Fork it

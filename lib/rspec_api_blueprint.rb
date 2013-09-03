@@ -57,7 +57,7 @@ RSpec.configure do |config|
           end
 
           # Request Body
-          if request_body.present?
+          if request_body.present? && request.content_type == 'application/json'
             f.write "+ Body\n\n".indent(4) if authorization_header
             f.write "#{JSON.pretty_generate(JSON.parse(request_body))}\n\n".indent(authorization_header ? 12 : 8)
           end
@@ -66,7 +66,7 @@ RSpec.configure do |config|
         # Response
         f.write "+ Response #{response.status} #{response.content_type}\n\n"
 
-        if response.body.present?
+        if response.body.present? && request.content_type == 'application/json'
           f.write "#{JSON.pretty_generate(JSON.parse(response.body))}\n\n".indent(8)
         end
       end unless response.status == 401 || response.status == 403 || response.status == 301
