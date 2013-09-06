@@ -16,7 +16,7 @@ unless "".respond_to?(:indent)
 end
 
 RSpec.configure do |config|
-  config.before(:all, type: :request) do
+  config.before(:suite) do
     api_docs_folder_path = File.join(Rails.root, '/api_docs/')
     Dir.mkdir(api_docs_folder_path) unless Dir.exists?(api_docs_folder_path)
 
