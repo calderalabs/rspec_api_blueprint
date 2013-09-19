@@ -58,6 +58,12 @@ The output:
           }
         }
 
+### Non-rails apps
+
+If you aren't using Rails, add this line to your RSpec config block
+
+    config.add_setting :current_dir, :default => File.dirname(__FILE__)+'/..'
+
 
 ## Caveats
 
