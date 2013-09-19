@@ -1,19 +1,5 @@
 require "rspec_api_blueprint/version"
-
-unless "".respond_to?(:indent)
-  class String
-    def indent(count, char = ' ')
-      gsub(/([^\n]*)(\n|$)/) do |match|
-        last_iteration = ($1 == "" && $2 == "")
-        line = ""
-        line << (char * count) unless last_iteration
-        line << $1
-        line << $2
-        line
-      end
-    end
-  end
-end
+require "rspec_api_blueprint/string_extensions"
 
 RSpec.configure do |config|
   config.before(:suite) do
