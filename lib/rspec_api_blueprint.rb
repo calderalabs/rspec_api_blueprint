@@ -1,13 +1,15 @@
 require "rspec_api_blueprint/version"
 require "rspec_api_blueprint/string_extensions"
 
+
 RSpec.configure do |config|
   config.before(:suite) do
     if defined? Rails
       api_docs_folder_path = File.join(Rails.root, '/api_docs/')
-    else # slight hackery based on a custom setting defined in the RSpec config
-      api_docs_folder_path = File.join(config.current_dir, '/api_docs/')
+    else
+      api_docs_folder_path = File.join(File.expand_path('.'), '/api_docs/')
     end
+
     Dir.mkdir(api_docs_folder_path) unless Dir.exists?(api_docs_folder_path)
 
     Dir.glob(File.join(api_docs_folder_path, '*')).each do |f|
@@ -31,8 +33,8 @@ RSpec.configure do |config|
 
       if defined? Rails
         file = File.join(Rails.root, "/api_docs/#{file_name}.txt")
-      else # slight hackery based on a custom setting defined in the RSpec config
-        file = File.join(config.current_dir, "/api_docs/#{file_name}.txt")
+      else 
+        file = File.join(File.expand_path('.'), "/api_docs/#{file_name}.txt")
       end
 
       File.open(file, 'a') do |f|

@@ -58,13 +58,6 @@ The output:
           }
         }
 
-### Non-rails apps
-
-If you aren't using Rails, add this line to your RSpec config block
-
-    config.add_setting :current_dir, :default => File.dirname(__FILE__)+'/..'
-
-
 ## Caveats
 
 401, 403 and 301 statuses are ignored since rspec produces a undesired output.
