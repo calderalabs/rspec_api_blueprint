@@ -18,6 +18,9 @@ RSpec.configure do |config|
   end
 
   config.after(:each, type: :request) do
+    response ||= last_response
+    request ||= last_request
+
     if response
       example_group = example.metadata[:example_group]
       example_groups = []
@@ -43,7 +46,7 @@ RSpec.configure do |config|
 
         # Request
         request_body = request.body.read
-        authorization_header = request.headers['Authorization']
+        authorization_header = request.env ? request.env['Authorization'] : request.headers['Authorization']
 
         if request_body.present? || authorization_header.present?
           f.write "+ Request #{request.content_type}\n\n"
